@@ -8,7 +8,8 @@ export const ItemsActions = {
 export const ItemActionCreators = {
   addItem: (item) => {
     return {
-      type: ItemsActions.ADD_ITEM
+      type: ItemsActions.ADD_ITEM,
+      item
     }
   },
 

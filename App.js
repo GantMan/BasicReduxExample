@@ -8,9 +8,10 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View
+  ScrollView
 } from 'react-native';
 import ListItems from './Components/listItems'
+import AddItems from './Components/addItems'
 import { Provider } from 'react-redux'
 import configureStore from './Redux/Store/configureStore'
 let store = configureStore()
@@ -19,12 +20,16 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <View style={styles.container}>
+        <ScrollView
+          contentContainerStyle={styles.container}
+          keyboardShouldPersistTaps='always'
+        >
           <Text style={styles.welcome}>
             Welcome to Redux
           </Text>
+          <AddItems />
           <ListItems />
-        </View>
+        </ScrollView>
       </Provider>
     )
   }
@@ -36,6 +41,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+    paddingBottom: 100
   },
   welcome: {
     fontSize: 20,
