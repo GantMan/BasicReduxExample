@@ -3,7 +3,8 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  LayoutAnimation
 } from 'react-native'
 
 import {connect} from 'react-redux'
@@ -12,6 +13,7 @@ class ListItems extends Component {
 
   listItems = () => {
     // window.alert(this.props.allItems)
+    LayoutAnimation.spring()
     return this.props.allItems.map(item => <Text key={item}>{item}</Text>)
   }
 
