@@ -19,9 +19,9 @@ export const ItemActionCreators = {
     }
   },
 
-  toggleItem: () => {
-    return {
-      type: ItemsActions.TOGGLE_ITEM
-    }
-  }
+  // toggleItem: () => {
+  //   return {
+  //     type: ItemsActions.TOGGLE_ITEM
+  //   }
+  // }
 }

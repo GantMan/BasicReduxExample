@@ -14,7 +14,7 @@ export function reducer (state = INITIAL_STATE, action) {
       }
     case ItemsActions.CLEAR:
       return {
-        ...INITIAL_STATE
+        myItems: []
       }
     // TODO
     case ItemsActions.TOGGLE_ITEM:

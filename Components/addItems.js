@@ -32,9 +32,15 @@ class ListItems extends Component {
             returnKeyLabel='Add Item'
             returnKeyType='done'
           />
-          <TouchableOpacity style={styles.button} onPress={this.addItem}>
-            <Text
-            >ADD ITEM</Text>
+          <TouchableOpacity
+            style={[{backgroundColor: 'green'}, styles.button]}
+            onPress={this.addItem}>
+            <Text>ADD ITEM</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[{backgroundColor: 'red'}, styles.button]}
+            onPress={() => this.props.dispatch(ItemActionCreators.clear())}>
+            <Text>CLEAR ITEMS</Text>
           </TouchableOpacity>
         </View>
     )
@@ -43,7 +49,6 @@ class ListItems extends Component {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: 'red',
     alignSelf: 'center',
     borderRadius: 4,
     margin: 5,
