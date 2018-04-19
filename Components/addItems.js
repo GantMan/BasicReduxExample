@@ -11,15 +11,7 @@ import {
 import { ItemActionCreators } from '../Redux/Actions/items'
 import {connect} from 'react-redux'
 
-class ListItems extends Component {
-  state = {
-    t: ''
-  }
-
-  addItem = () => {
-    this.props.dispatch(ItemActionCreators.addItem(this.state.t))
-  }
-
+class AddItems extends Component {
   render() {
     return (
         <View>
@@ -27,14 +19,15 @@ class ListItems extends Component {
             autoFocus
             blurOnSubmit
             clearTextOnFocus
-            onSubmitEditing={this.addItem}
-            onChangeText={t => this.setState({t})}
+            onSubmitEditing={() => this.props.dispatch(ItemActionCreators.addItem())}
+            onChangeText={(t) => this.props.dispatch(ItemActionCreators.setNewItemName(t))}
+            value={this.props.newItemName}
             returnKeyLabel='Add Item'
             returnKeyType='done'
           />
           <TouchableOpacity
             style={[{backgroundColor: 'green'}, styles.button]}
-            onPress={this.addItem}>
+            onPress={() => this.props.dispatch(ItemActionCreators.addItem())}>
             <Text>ADD ITEM</Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -56,4 +49,10 @@ const styles = StyleSheet.create({
   }
 })
 
-export default connect()(ListItems)
+const mapStateToProps = (state) => {
+  return {
+    newItemName: state.items.newItemName
+  }
+}
+
+export default connect(mapStateToProps)(AddItems)

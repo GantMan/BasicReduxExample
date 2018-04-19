@@ -2,7 +2,8 @@ import { ItemsActions } from '../Actions/items'
 
 // shape is an empty array
 const INITIAL_STATE = {
-  myItems: ['nacho', 'burrito', 'hotdog']
+  myItems: ['nacho', 'burrito', 'hotdog'],
+  newItemName: ''
 }
 
 export function reducer (state = INITIAL_STATE, action) {
@@ -10,16 +11,18 @@ export function reducer (state = INITIAL_STATE, action) {
     case ItemsActions.ADD_ITEM:
       return {
         ...state,
-        myItems: [...state.myItems, action.item]
+        myItems: [...state.myItems, state.newItemName],
+        newItemName: ''
       }
     case ItemsActions.CLEAR:
       return {
+        ...state,
         myItems: []
       }
-    // TODO
-    case ItemsActions.TOGGLE_ITEM:
+    case ItemsActions.SET_NEW_ITEM_NAME:
       return {
-        ...state
+        ...state,
+        newItemName: action.value
       }
     default:
       return state

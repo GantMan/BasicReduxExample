@@ -1,15 +1,14 @@
 export const ItemsActions = {
   ADD_ITEM: 'ADD_ITEM',
   CLEAR: 'CLEAR',
-  TOGGLE_ITEM: 'TOGGLE_ITEM'
+  SET_NEW_ITEM_NAME: 'SET_NEW_ITEM_NAME'
 }
 
 // Action creators store.dispatch actions
 export const ItemActionCreators = {
-  addItem: (item) => {
+  addItem: () => {
     return {
-      type: ItemsActions.ADD_ITEM,
-      item
+      type: ItemsActions.ADD_ITEM
     }
   },
 
@@ -19,9 +18,10 @@ export const ItemActionCreators = {
     }
   },
 
-  // toggleItem: () => {
-  //   return {
-  //     type: ItemsActions.TOGGLE_ITEM
-  //   }
-  // }
+  setNewItemName: (value) => {
+    return {
+      type: ItemsActions.SET_NEW_ITEM_NAME,
+      value
+    }
+  }
 }
